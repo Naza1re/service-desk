@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: entity-framework
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5050/db}
+    password: ${DB_PASSWORD:pass}
+    username: ${DB_USERNAME:user}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        query:
+          in_clause_parameter_padding: ${IN_CLAUSE_PARAMETER_PADDING:true}
+        show_sql: true
+        format_sql: true
+    show-sql: true
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+    enabled: true
+    default-schema: entity_framework
+
+entity:
+  type:
+    excluded-codes: ${ENTITY_TYPE_EXCLUDED_CODES:restrict}
