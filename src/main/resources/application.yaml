@@ -17,10 +17,23 @@ spring:
         format_sql: true
     show-sql: true
   liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.xml
+    change-log: classpath:/db/changelog/db.changelog-sd-master.xml
     enabled: true
     default-schema: entity_framework
 
 entity:
   type:
     excluded-codes: ${ENTITY_TYPE_EXCLUDED_CODES:restrict}
+  import:
+    columns:
+      - header: "Имя"
+        json-key: "name"
+      - header: "Фамилия"
+        json-key: "surname"
+      - header: "Тип"
+        json-key: "type"
+      - header: "Создан"
+        json-key: "createdAt"
+      - header: "Обновлен"
+        json-key: "updatedAt"
+

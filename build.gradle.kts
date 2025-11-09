@@ -16,11 +16,13 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/Naza1re/entity-framework")
         credentials {
-            username = System.getenv("USERNAME_GITHUB")
-            password = System.getenv("TOKEN_GITHUB")            }
+            username = findProperty("USERNAME_GITHUB") as String? ?: System.getenv("USERNAME_GITHUB")
+            password = findProperty("TOKEN_GITHUB") as String? ?: System.getenv("TOKEN_GITHUB")
+        }
     }
     mavenCentral()
 }
+
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter")
@@ -33,7 +35,7 @@ dependencies {
     implementation("com.vladmihalcea:hibernate-types-60:2.21.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
-    implementation("com.kotlin:entity-framework:0.0.1")
+    implementation("com.kotlin:entity-framework:0.1.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
