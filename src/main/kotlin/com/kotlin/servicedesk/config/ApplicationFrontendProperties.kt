@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component
 @ConfigurationProperties("frontend")
 class ApplicationFrontendProperties {
     val corsOrigins: String = ""
-    val pathPattern: String = ""
+    val corsPathPattern: String = ""
 }

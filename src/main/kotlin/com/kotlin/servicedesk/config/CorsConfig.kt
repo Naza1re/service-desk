@@ -14,7 +14,7 @@ class CorsConfig(
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry
-                    .addMapping(applicationFrontendProperties.pathPattern)
+                    .addMapping(applicationFrontendProperties.corsPathPattern)
                     .allowedOrigins(applicationFrontendProperties.corsOrigins)
             }
         }
