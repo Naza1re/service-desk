@@ -7,7 +7,7 @@
            http://www.liquibase.org/xml/ns/dbchangelog
            https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet author="NBachishche" id="SD-1-create_custom_fields">
+    <changeSet author="NBachishche" id="SD-1-create_custom_fields" runOnChange="true">
         <sqlFile path="db/changelog/migrations/data/custom-fields.sql"
                  splitStatements="false"/>
     </changeSet>
