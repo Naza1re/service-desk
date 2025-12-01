@@ -6,12 +6,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.springframework.stereotype.Component
 
 @Component
-class CorsConfig {
+class CorsConfig(
+    private val applicationFrontendProperties: ApplicationFrontendProperties
+) {
     @Bean
     fun corsConfigurer(): WebMvcConfigurer? {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
-                registry.addMapping("/**").allowedOrigins("http://localhost:5175")
+                registry
+                    .addMapping(applicationFrontendProperties.pathPattern)
+                    .allowedOrigins(applicationFrontendProperties.corsOrigins)
             }
         }
     }

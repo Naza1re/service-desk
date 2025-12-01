@@ -36,4 +36,8 @@ entity:
         json-key: "createdAt"
       - header: "Обновлен"
         json-key: "updatedAt"
+frontend:
+  cors:
+    origins: ${FRONTEND_CORS_ORIGINS:http://localhost:5175}
+    pathPattern: "/**"
 
