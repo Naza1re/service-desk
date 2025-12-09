@@ -1,5 +1,6 @@
-package com.kotlin.servicedesk.config
+package com.kotlin.servicedesk.config.frontend
 
+import com.kotlin.servicedesk.config.properties.ApplicationFrontendProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
