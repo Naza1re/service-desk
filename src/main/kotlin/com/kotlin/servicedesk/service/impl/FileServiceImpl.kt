@@ -39,20 +39,20 @@ class FileServiceImpl(
     override fun uploadFileToEntity(file: MultipartFile, entityNumber: String): FileResponse {
         val entity = entityRepository.findByNumber(entityNumber)
             ?: throw EntityNotFoundException("Entity with number $entityNumber not found")
-            val key = UUID.randomUUID().toString() + "-" + file.originalFilename
-            val request = PutObjectRequest.builder()
+        val key = UUID.randomUUID().toString() + "-" + file.originalFilename
+        val fileEntity = FileEntity(
+                id = null,
+                key = key,
+                size = file.size,
+                entity = entity
+        )
+        val savedEntity = fileEntityRepository.save(fileEntity)
+        val request = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(key)
                 .contentType(file.contentType)
                 .build()
             s3Client.putObject(request, RequestBody.fromBytes(file.bytes))
-            val fileEntity = FileEntity(
-                id = 0,
-                key = key,
-                size = file.size,
-                entity = entity
-            )
-            val savedEntity = fileEntityRepository.save(fileEntity)
             return FileResponse(
                 name = key,
                 message = "File saved with key : $key to entity with number : $savedEntity")
