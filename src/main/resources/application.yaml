@@ -21,6 +21,14 @@ spring:
     enabled: true
     default-schema: entity_framework
 
+
+s3:
+  config:
+    accessKeyId: ${ACCESS_KEY_ID:minioadmin}
+    secretKey: ${SECRET_KEY:minioadmin}
+    url: ${S_3_URL:http://localhost:9000}
+    standardBucket: ${DEFAULT_BUCKET_NAME:my-bucket}
+
 entity:
   type:
     excluded-codes: ${ENTITY_TYPE_EXCLUDED_CODES:restrict}
