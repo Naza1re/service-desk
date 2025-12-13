@@ -35,7 +35,7 @@ dependencies {
     implementation("com.vladmihalcea:hibernate-types-60:2.21.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
-    implementation("com.kotlin:entity-framework:0.1.0")
+    implementation("com.kotlin:entity-framework:0.1.2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
