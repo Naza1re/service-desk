@@ -1,4 +1,4 @@
-package com.kotlin.servicedesk.config
+package com.kotlin.servicedesk.config.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.stereotype.Component
