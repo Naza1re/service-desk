@@ -38,7 +38,7 @@ class FileServiceImpl(
     @Transactional
     override fun uploadFileToEntity(file: MultipartFile, entityNumber: String): FileResponse {
         val entity = entityRepository.findByNumber(entityNumber)
-        if (entity != null) {
+            ?: throw EntityNotFoundException("Entity with number $entityNumber not found")
             val key = UUID.randomUUID().toString() + "-" + file.originalFilename
             val request = PutObjectRequest.builder()
                 .bucket(bucketName)
@@ -55,11 +55,7 @@ class FileServiceImpl(
             val savedEntity = fileEntityRepository.save(fileEntity)
             return FileResponse(
                 name = key,
-                message = "File saved with key : $key to entity with number : $savedEntity"
-            )
-        } else {
-            throw EntityNotFoundException("Entity with number $entityNumber not found")
-        }
+                message = "File saved with key : $key to entity with number : $savedEntity")
     }
 
     override fun getAllEntityFiles(entityId: String): EntityFilesResponse {
