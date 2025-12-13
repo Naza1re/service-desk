@@ -17,4 +17,9 @@
                  splitStatements="false"/>
     </changeSet>
 
+    <changeSet author="NBachishche" id="SD-5-create-file-entity-table">
+        <sqlFile path="db/changelog/migrations/data/create-file-entity-table.sql"
+                 splitStatements="false"/>
+    </changeSet>
+
 </databaseChangeLog>
