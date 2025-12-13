@@ -10,6 +10,8 @@ data class FileEntity(
     val id: Long? = null,
     @Column(name = "file_key")
     val key: String,
+    @Column(name = "content_type", nullable = false)
+    val contentType: String,
     @Column(name = "size")
     val size: Long,
     @ManyToOne
