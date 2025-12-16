@@ -43,7 +43,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
     //entity-framework
-    implementation("com.kotlin:entity-framework:0.1.2")
+    implementation("com.kotlin:entity-framework:0.1.3")
 
     //s3
     implementation("software.amazon.awssdk:s3:2.30.26")

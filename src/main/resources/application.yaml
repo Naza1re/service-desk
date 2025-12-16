@@ -13,7 +13,7 @@ spring:
       hibernate:
         query:
           in_clause_parameter_padding: ${IN_CLAUSE_PARAMETER_PADDING:true}
-        show_sql: true
+        show_sql: false
         format_sql: true
     show-sql: true
   liquibase:

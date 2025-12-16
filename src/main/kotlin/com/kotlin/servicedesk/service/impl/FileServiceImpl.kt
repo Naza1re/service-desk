@@ -10,7 +10,6 @@ import com.kotlin.servicedesk.exception.FileNotFoundException
 import com.kotlin.servicedesk.model.FileEntity
 import com.kotlin.servicedesk.repository.FileEntityRepository
 import com.kotlin.servicedesk.service.FileService
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.multipart.MultipartFile
@@ -77,10 +76,7 @@ class FileServiceImpl(
 
     override fun getAllEntityFiles(entityNumber: String): EntityFilesResponse {
         val listOfFiles = fileEntityRepository.findAllByEntity(entityNumber).map { it.key }
-        return EntityFilesResponse(
-            entityNumber = entityNumber,
-            listOfFiles
-        )
+        return EntityFilesResponse(entityNumber, listOfFiles)
     }
 
     override fun deleteFileByKey(s3FileKey: String) {
