@@ -13,21 +13,36 @@ spring:
       hibernate:
         query:
           in_clause_parameter_padding: ${IN_CLAUSE_PARAMETER_PADDING:true}
-        show_sql: false
+        show_sql: true
         format_sql: true
     show-sql: true
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-sd-master.xml
     enabled: true
     default-schema: entity_framework
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: ${KAFKA_PRODUCER_KEY_SERIALIZER:org.apache.kafka.common.serialization.StringSerializer}
+      value-serializer: ${KAFKA_PRODUCER_VALUE_SERIALIZER:org.springframework.kafka.support.serializer.JsonSerializer}
 
+outbox:
+  cleaner:
+    enable: ${OUTBOX_CLEANER_ENABLE:true}
+    cron: ${OUTBOX_CLEANER_CRON:*/10 * * * * *}
+    batch: ${OUTBOX_CLEANER_BATCH:5}
+  scheduler:
+    cron: ${OUTBOX_SCHEDULER_CRON:*/10 * * * * *}
+    batch: ${OUTBOX_SCHEDULER_BATCH:5}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
 
 s3:
   config:
     accessKeyId: ${ACCESS_KEY_ID:minioadmin}
     secretKey: ${SECRET_KEY:minioadmin}
     url: ${S_3_URL:http://localhost:9000}
-    standardBucket: ${DEFAULT_BUCKET_NAME:my-bucket}
+    standardBucket: ${DEFAULT_BUCKET_NAME:entity-bucket}
 
 entity:
   type:
@@ -44,6 +59,7 @@ entity:
         json-key: "createdAt"
       - header: "Обновлен"
         json-key: "updatedAt"
+
 frontend:
   cors:
     origins: ${FRONTEND_CORS_ORIGINS:http://localhost:5175}

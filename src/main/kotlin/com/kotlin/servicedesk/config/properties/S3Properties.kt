@@ -10,5 +10,4 @@ class S3Properties {
     lateinit var secretKey: String
     lateinit var url: String
     lateinit var standardBucket: String
-
 }
