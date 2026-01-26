@@ -36,6 +36,10 @@ outbox:
     batch: ${OUTBOX_SCHEDULER_BATCH:5}
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    topics:
+      entity-create: entity-create
+      entity-update: entity-update
+      entity-delete: entity-delete
 
 s3:
   config:

@@ -62,7 +62,7 @@ class FileServiceImpl(
                 entity = entity
 
         )
-        val savedEntity = fileEntityRepository.save(fileEntity)
+        fileEntityRepository.save(fileEntity)
         val request = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(key)
@@ -91,6 +91,5 @@ class FileServiceImpl(
                 .build()
         )
     }
-
 
 }

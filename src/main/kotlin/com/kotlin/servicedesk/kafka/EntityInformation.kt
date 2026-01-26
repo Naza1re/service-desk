@@ -1,4 +1,4 @@
-package com.kotlin.servicedesk.config.kafka
+package com.kotlin.servicedesk.kafka
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.kotlin.outboxstarter.kafka.KafkaObject
@@ -9,7 +9,8 @@ class EntityInformation(
     @JsonProperty("description") val description: String,
     @JsonProperty("createdAt") val createdAt: String,
     @JsonProperty("updatedAt") val updatedAt: String,
-    @JsonProperty("properties") val properties: Map<String, Any>
+    @JsonProperty("properties") val properties: Map<String, Any>,
+    @JsonProperty("files") val files: List<String>
 ) : KafkaObject<EntityInformation> {
     override fun key(): String {
         return number

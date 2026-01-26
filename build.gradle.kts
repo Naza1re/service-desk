@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.25"
-    kotlin("plugin.spring") version "1.9.25"
+    kotlin("plugin.spring") version "2.0.0"
     kotlin("plugin.jpa") version "1.9.25"
     id("org.springframework.boot") version "3.5.6"
     id("io.spring.dependency-management") version "1.1.7"
@@ -51,7 +51,7 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.15.2")
 
     //entity-framework-starter
-    implementation("com.kotlin:entity-framework:0.1.3")
+    implementation("com.kotlin:entity-framework:0.1.5")
 
     //outbox-starter
     implementation("com.kotlin:outbox-starter:0.0.7")
