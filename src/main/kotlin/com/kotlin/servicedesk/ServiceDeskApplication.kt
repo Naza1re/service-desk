@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 @SpringBootApplication
 @EntityScan(
     basePackages = [
+        "com.kotlin.outboxstarter.model",
         "com.kotlin.servicedesk.model",
         "com.kotlin.entityframework.model.entity"
     ]

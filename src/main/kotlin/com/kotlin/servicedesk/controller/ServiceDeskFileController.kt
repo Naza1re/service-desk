@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile
 
 @RestController
 @RequestMapping("/api/v0.1/files")
-class FileController(
+class ServiceDeskFileController(
     private val fileService: FileService
 ) {
 
@@ -31,15 +31,15 @@ class FileController(
 
     }
 
-    @PostMapping("/{entityId}")
+    @PostMapping("/{entityNumber}")
     fun addFileToEntity(@RequestBody file: MultipartFile,
-                        @PathVariable entityId: String) : ResponseEntity<FileResponse> {
-        return ResponseEntity.status(HttpStatus.CREATED).body(fileService.uploadFileToEntity(file, entityId))
+                        @PathVariable entityNumber: String) : ResponseEntity<FileResponse> {
+        return ResponseEntity.status(HttpStatus.CREATED).body(fileService.uploadFileToEntity(file, entityNumber))
     }
 
-    @GetMapping("/entity/{entityId}")
-    fun getAllFilesByEntityId(@PathVariable entityId: String) : ResponseEntity<EntityFilesResponse> {
-        return ResponseEntity.ok(fileService.getAllEntityFiles(entityId))
+    @GetMapping("/entity/{entityNumber}")
+    fun getAllFilesByEntityId(@PathVariable entityNumber: String) : ResponseEntity<EntityFilesResponse> {
+        return ResponseEntity.ok(fileService.getAllEntityFiles(entityNumber))
     }
 
     @DeleteMapping("/{s3FileKey}")

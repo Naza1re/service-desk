@@ -8,6 +8,6 @@ import org.springframework.web.multipart.MultipartFile
 interface FileService {
     fun getFileByKey(s3fileKey: String): FileWithMeta
     fun uploadFileToEntity(file: MultipartFile, entityNumber: String): FileResponse
-    fun getAllEntityFiles(entityId: String): EntityFilesResponse
+    fun getAllEntityFiles(entityNumber: String): EntityFilesResponse
     fun deleteFileByKey(s3FileKey: String)
 }
